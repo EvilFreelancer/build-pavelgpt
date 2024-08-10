@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+
+  whisper:
+    restart: "unless-stopped"
+    build:
+      context: .
+    volumes:
+      - .:/app
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
